@@ -53,15 +53,12 @@
                                     </div>
                                 </div>
                             </div>
-                           <div class="d-flex align-items-center ms-1 ms-lg-3">
-								<a href="https://maps.app.goo.gl/cBmxsUDtQh7Q1hzg8" class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px">
-									<i class="ki-duotone ki-geolocation fs-1">
-										<span class="path1"></span>
-										<span class="path2"></span>
-									</i>
-									<span class="pulse-ring w-45px h-45px"></span>
-								</a>
-							</div>
+                            <div class="d-flex align-items-center ms-1 ms-lg-3">
+                                <div class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px" data-bs-toggle="modal" data-bs-target="#kt_modal_select_location">
+                                    <i class="ki-duotone ki-geolocation fs-1"><span class="path1"></span><span class="path2"></span></i>
+                                    <span class="pulse-ring w-45px h-45px"></span>
+                                </div>
+                            </div>
                             <div class="d-flex align-items-center ms-1 ms-lg-3">
                                 <div class="position-relative btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_drawer_chat_toggle">
                                     <i class="ki-duotone ki-message-text-2 fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
@@ -185,7 +182,7 @@
 														data-bs-toggle="tab"
 														data-bs-target="#kt_stats_widget_2_tab_{{ categorie.id }}">
 															<img src="{{ asset(categorie.icone) }}"
-																class="w-45px bg-secondary rounded-circle p-1" alt="{{ categorie.nom }}" 	loading="lazy"
+																class="w-45px bg-secondary rounded-circle  p-2" alt="{{ categorie.nom }}" 	loading="lazy"
 																					decoding="async">
 															<span class="nav-text text-dark fw-bold fs-6 lh-1 mt-1">{{ categorie.nom }}</span>
 														</a>
@@ -273,8 +270,8 @@
 
 <div class="card mb-4 bg-light text-center mb-4">
     <div class="card-body py-12">
-        <a href="https://www.facebook.com/p/Caf%C3%A8te-Du-Golf-61576881780257/" class="mx-4"><img src="assets/media/svg/brand-logos/facebook-4.svg" class="h-30px my-2" alt=""></a>
-        <a href="https://www.instagram.com/cafete_du_golf/reels/?hl=en" class="mx-4"><img src="assets/media/svg/brand-logos/instagram-2-1.svg" class="h-30px my-2" alt=""></a>
+        <a href="#" class="mx-4"><img src="assets/media/svg/brand-logos/facebook-4.svg" class="h-30px my-2" alt=""></a>
+        <a href="#" class="mx-4"><img src="assets/media/svg/brand-logos/instagram-2-1.svg" class="h-30px my-2" alt=""></a>
         <a href="#" class="mx-4"><img src="assets/media/svg/brand-logos/pinterest-p.svg" class="h-30px my-2" alt=""></a>
     </div>
 </div>
