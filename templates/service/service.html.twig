@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="" />
+    <title>Caféte du Golf</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+</head>
+<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+
+<script>
+    var defaultThemeMode = "light";
+    var themeMode;
+    if (document.documentElement) {
+        if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+            themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+        } else if (localStorage.getItem("data-bs-theme") !== null) {
+            themeMode = localStorage.getItem("data-bs-theme");
+        } else {
+            themeMode = defaultThemeMode;
+        }
+        if (themeMode === "system") {
+            themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-bs-theme", themeMode);
+    }
+</script>
+
+<div class="d-flex flex-column flex-root">
+    <div class="page d-flex flex-row flex-column-fluid">
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <div id="kt_header" class="header align-items-stretch mb-5 mb-lg-10" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}" style="animation-duration: 0.3s;">
+                <div class="container-xxl d-flex align-items-center">
+                    <div class="d-flex topbar align-items-center d-lg-none ms-n2 me-3" title="Show aside menu">
+                        <div class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
+                            <i class="ki-duotone ki-abstract-14 fs-1"><span class="path1"></span><span class="path2"></span></i>
+                        </div>
+                    </div>
+                    <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0"></div>
+                    <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+                        <div class="d-flex align-items-stretch" id="kt_header_nav"></div>
+                        <div class="topbar d-flex align-items-stretch flex-shrink-0">
+                            <div class="d-flex align-items-stretch ms-1 ms-lg-3">
+                                <div id="kt_header_search" class="header-search d-flex align-items-stretch" data-kt-search="true">
+                                    <div class="d-flex align-items-center" data-kt-search-element="toggle" id="kt_header_search_toggle">
+                                        <div class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px">
+                                            <i class="ki-duotone ki-magnifier fs-1"><span class="path1"></span><span class="path2"></span></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center ms-1 ms-lg-3">
+                                <div class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px" data-bs-toggle="modal" data-bs-target="#kt_modal_select_location">
+                                    <i class="ki-duotone ki-geolocation fs-1"><span class="path1"></span><span class="path2"></span></i>
+                                    <span class="pulse-ring w-45px h-45px"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center ms-1 ms-lg-3">
+                                <div class="position-relative btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_drawer_chat_toggle">
+                                    <i class="ki-duotone ki-message-text-2 fs-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                    <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center me-lg-n2 ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+                                <div class="header-logo">
+                                    <a href="">
+                                        <img alt="Logo" src="assets/media/ch/logoW.webp" class="logo-default h-30px">
+                                        <img alt="Logo" src="assets/media/ch/logoB.webp" class="logo-sticky h-40px">
+                                    </a>
+                                </div>
+                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
+                                    <div class="menu-item px-3">
+                                        <div class="menu-content d-flex align-items-center px-3">
+                                            <div class="symbol symbol-50px me-5">
+                                                <img alt="Logo" src="assets/media/ch/logoCafe.webp">
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <div class="fw-bold d-flex align-items-center fs-5">Caféte du Golf<span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
+                                                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">golf@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="separator my-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar py-5 pb-lg-15" id="kt_toolbar">
+                <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap"></div>
+            </div>
+
+            <div id="kt_content_container" class="d-flex flex-column-fluid">
+                <div class="content flex-row-fluid" id="kt_content">
+                    <div class="container-xxl"> 
+						<div class="row gx-5 gx-xl-8 mb-5 mb-xl-10 justify-content-center">
+							<div class="col-xl-10">
+								<div class="row gx-5 gx-xl-8 mb-5 mb-xl-8 justify-content-center">
+									<div class="tns tns-default" style="direction: ltr">
+										<div data-tns="true"
+											data-tns-loop="true"
+											data-tns-swipe-angle="false"
+											data-tns-speed="2000"
+											data-tns-autoplay="true"
+											data-tns-autoplay-timeout="3000"
+											data-tns-controls="true"
+											data-tns-nav="false"
+											data-tns-items="1"
+											data-tns-center="false"
+											data-tns-dots="false"
+											data-tns-prev-button="#kt_card_slider_prev"
+											data-tns-next-button="#kt_card_slider_next">
+
+											<div  class="px-2 tns-item" id="tns1-item0" aria-hidden="true" tabindex="-1">
+												<div class="card h-175px border-0 shadow bgi-no-repeat bgi-size-cover bgi-position-center w-100"
+													style="background-image: url('{{ asset('assets/media/ch/pub.webp') }}')">
+													<div class="card-body d-flex flex-column justify-content-end align-items-start pb-2"></div>
+												</div>
+											</div>
+
+											<div  class="px-2 tns-item" id="tns1-item0" aria-hidden="true" tabindex="-1">
+												<div class="card h-175px border-0 shadow bgi-no-repeat bgi-size-cover bgi-position-center w-100"
+													style="background-image: url('{{ asset('assets/media/ch/pub2.webp') }}')">
+													<div class="card-body d-flex flex-column justify-content-end align-items-start pb-2"></div>
+												</div>
+											</div>
+
+											<div  class="px-2 tns-item" id="tns1-item0" aria-hidden="true" tabindex="-1">
+												<div class="card h-175px border-0 shadow bgi-no-repeat bgi-size-cover bgi-position-center w-100"
+													style="background-image: url('{{ asset('assets/media/ch/pub3.webp') }}')">
+													<div class="card-body d-flex flex-column justify-content-end align-items-start pb-2">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="d-flex justify-content-center mt-3">
+											<button class="btn btn-icon btn-active-color-primary me-2" id="kt_card_slider_prev">
+												<i class="ki-duotone ki-left fs-2x"></i>
+											</button>
+											<button class="btn btn-icon btn-active-color-primary" id="kt_card_slider_next">
+												<i class="ki-duotone ki-right fs-2x"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+					</div>
+
+								<style>
+								.tns-item {
+									background: none !important;
+									border: none !important;
+									box-shadow: none !important;
+								}
+								</style>
+
+								<div class="row gx-5 gx-xl-8 mb-5 mb-xl-8 justify-content-center">
+									<div class="col-xl-12">
+										<div class="tns tns-default position-relative" style="direction: ltr">
+											<div id="food-slider"
+												data-tns="true"
+												data-tns-loop="true"
+												data-tns-swipe-angle="false"
+												data-tns-speed="600"
+												data-tns-controls="true"
+												data-tns-nav="false"
+												data-tns-items="3"
+												data-tns-center="false"
+												data-tns-dots="false"
+												data-tns-prev-button="#kt_team_slider_prev1"
+												data-tns-next-button="#kt_team_slider_next1">
+												{% for categorie in categories %}
+													<div class="text-center px-2 py-2">
+														<a class="nav-link d-flex flex-column rounded-3 flex-center overflow-hidden w-80px h-85px py-4"
+														data-bs-toggle="tab"
+														data-bs-target="#kt_stats_widget_2_tab_{{ categorie.id }}">
+															<img src="{{ asset(categorie.icone) }}"
+																class="w-45px bg-secondary rounded-circle  p-2" alt="{{ categorie.nom }}" 	loading="lazy"
+																					decoding="async">
+															<span class="nav-text text-dark fw-bold fs-6 lh-1 mt-1">{{ categorie.nom }}</span>
+														</a>
+													</div>
+												{% endfor %}
+											</div>
+
+											<button class="btn btn-icon btn-active-color-primary position-absolute top-50 start-0 translate-middle-y ms-n3 z-index-3" id="kt_team_slider_prev1">
+												<i class="ki-duotone ki-left fs-2x"></i>
+											</button>
+											<button class="btn btn-icon btn-active-color-primary position-absolute top-50 end-0 translate-middle-y me-n3 z-index-3" id="kt_team_slider_next1">
+												<i class="ki-duotone ki-right fs-2x"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="row g-5 g-xl-10 mb-5 mb-xl-10 justify-content-center">
+									<div class="col-xl-12">
+										<div class="tab-content">
+											{% for categorie in categories %}
+												<div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="kt_stats_widget_2_tab_{{ categorie.id }}">
+													<div class="row g-4">
+														{% for produit in categorie.produits %}
+															<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+																<div class="card card-flush h-100 p-2">
+																	<div class="card-body text-center p-0">
+																		<div class="position-relative">
+																			<span class="position-absolute top-0 start-0 m-1 z-index-2">
+																				<i class="ki-duotone ki-heart-circle fs-1 text-danger">
+																					<span class="path1"></span>
+																					<span class="path2"></span>
+																				</i>
+																			</span>
+
+																			<a href="{{ path('app_produit_details', {'id': produit.id}) }}">
+																				<img 
+																					src="{{ asset(produit.image) }}" 
+																					alt="{{ produit.nom }}" 
+																					class="rounded-3 w-100 h-120px object-fit-cover mb-3" 
+																					loading="lazy"
+																					decoding="async"
+																				/>
+
+																			</a>
+																			{% if produit.reduction %}
+																				<span class="badge badge-light-danger position-absolute top-0 end-0 m-1">
+																					{{ produit.reduction }}%
+																				</span>
+																			{% endif %}
+																		</div>
+
+																		<div class="mb-2">
+																			<span class="fw-bold text-gray-800 text-hover-primary fs-6 d-block text-truncate">
+																				{{ produit.nom }}
+																			</span>
+																		</div>
+
+																		<div>
+																			<span class="text-success fw-bold fs-5">DT {{ produit.prix }}</span>
+																			{% if produit.prixAncien %}
+																				<span class="text-gray-400 text-decoration-line-through fs-7 ms-1">
+																					DT {{ produit.prixAncien }}
+																				</span>
+																			{% endif %}
+																		</div>
+																	</div>
+																</div>
+															</div>
+														{% else %}
+															<div class="col-12">
+																<p>Aucun produit disponible dans cette catégorie.</p>
+															</div>
+														{% endfor %}
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+			
+					</div>
+				</div>
+			</div>
+
+<div class="card mb-4 bg-light text-center mb-4">
+    <div class="card-body py-12">
+        <a href="#" class="mx-4"><img src="assets/media/svg/brand-logos/facebook-4.svg" class="h-30px my-2" alt=""></a>
+        <a href="#" class="mx-4"><img src="assets/media/svg/brand-logos/instagram-2-1.svg" class="h-30px my-2" alt=""></a>
+        <a href="#" class="mx-4"><img src="assets/media/svg/brand-logos/pinterest-p.svg" class="h-30px my-2" alt=""></a>
+    </div>
+</div>
+
+<script>var hostUrl = "assets/";</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-bs-target^="#kt_stats_widget_2_tab_"]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(link.dataset.bsTarget);
+            if (!target) return;
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('show', 'active'));
+            target.classList.add('show', 'active');
+        });
+    });
+});
+</script>
+
+<script src="assets/plugins/global/plugins.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
+</body>
+</html>
