@@ -3,8 +3,8 @@
 <head>
   <base href="">
   <meta charset="utf-8">
-  <title>{{ produit.nom }} – Café Bliss</title>
-  <meta name="description" content="Découvrez {{ produit.nom }} chez Café Bliss">
+  <title>Caféte du Golf</title>
+  <meta name="description" content="Découvrez {{ produit.nom }} chez Caféte du Golf">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700">
@@ -19,23 +19,17 @@
 <body id="kt_body" class="bg-white">
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-lg-8 col-xl-6">
-
-        <!-- PRODUCT CARD -->
-        <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
-
-          <!-- IMAGE -->
+      <div class="col-lg-8 col-xl-6"> 
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden"> 
           <div class="position-relative">
             <img src="{{ asset(produit.image) }}" alt="{{ produit.nom }}" class="img-fluid w-100" style="object-fit:cover; height:320px;">
             <span class="position-absolute top-0 end-0 m-3">
               <i class="ki-duotone ki-heart-circle text-danger fs-1"></i>
             </span>
           </div>
-
-          <!-- BODY -->
+ 
           <div class="card-body p-5">
-
-            <!-- TOP LINE -->
+ 
             <div class="d-flex justify-content-between align-items-start mb-3">
               <div>
                 <h2 class="fw-bolder text-gray-900 mb-1">{{ produit.nom }}</h2>
@@ -43,34 +37,32 @@
                   {% if produit.prixAncien %}
                     <span class="text-gray-400 text-decoration-line-through">DT {{ produit.prixAncien }}</span>
                   {% endif %}
+                  {% if produit.reduction %}
                   <span class="badge badge-light-success fw-bold fs-7">{{ produit.reduction ?? 0 }} % OFF</span>
+                  {% endif %}
                 </div>
               </div>
 
               <div class="text-end">
                 <div class="d-flex align-items-center justify-content-end gap-1">
                   <i class="ki-duotone ki-star text-warning fs-5"></i>
-                  <span class="fw-bold text-dark fs-5">4.5</span>
-                  <span class="text-muted fs-7">(345)</span>
+                  <span class="fw-bold text-dark fs-5">4.6  </span>
+                  <span class="text-muted fs-7">(34)</span>
                 </div>
               </div>
             </div>
 
-            <hr class="text-gray-200 my-4">
+            <hr class="text-gray-200 my-4"> 
 
-            <!-- CATEGORY -->
             <div class="mb-4">
               <span class="badge badge-light-primary fs-7 fw-semibold px-3 py-2">
                 {{ produit.categorie.nom }}
               </span>
             </div>
-
-            <!-- DESCRIPTION -->
+ 
             <div class="mb-5">
-              <h5 class="fw-bold text-gray-800 mb-2">Description</h5>
-                <p>
-                A delicious <strong>{{ produit.nom }}</strong> carefully prepared at Café Bliss.
-                
+              <h5 class="fw-bold text-gray-1000 mb-2">Description</h5>
+                <p>                
                 {% if produit.description %}
                     <br>
                     <span>{{ produit.description }}</span>
@@ -83,20 +75,13 @@
                 </p>
 
             </div>
+ 
 
-            <!-- CTA -->
-            <div class="d-grid">
-              <button class="btn btn-danger btn-lg fw-semibold">
-                <i class="ki-duotone ki-shopping-cart fs-2 me-2"></i>
-                Add to Cart
-              </button>
-            </div>
-
-          </div><!-- /.card-body -->
-        </div><!-- /.card -->
-      </div><!-- /.col -->
-    </div><!-- /.row -->
-  </div><!-- /.container -->
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  </div>   
 
   <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
   <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
