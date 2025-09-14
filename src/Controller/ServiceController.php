@@ -23,7 +23,7 @@ final class ServiceController extends AbstractController
     public function index1(CategorieRepository $categorieRepository,ProduitRepository $produitRepository): Response
     { 
         $categories = $categorieRepository->findAll();
-        $produits = $prodRepo->findAllGroupedByCategory();
+        $produits = $produitRepository->findAll();
 
         return $this->render('service/service.html.twig', [
             'categories' => $categories,
@@ -40,5 +40,6 @@ public function details(Produit $produit): Response
     ]);
 }
 
+    
 
 }
