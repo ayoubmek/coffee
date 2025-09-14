@@ -60,6 +60,7 @@
               </span>
             </div>
  
+            {% if produit.description %}
             <div class="mb-5">
               <h5 class="fw-bold text-gray-1000 mb-2">Description</h5>
                 <p>                
@@ -73,9 +74,8 @@
                     Enjoy <strong>{{ produit.reduction }}% discount</strong> for a limited time!
                 {% endif %}
                 </p>
-
             </div>
- 
+             {% endif %}
 
           </div> 
         </div> 
