@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: "App\Repository\ServiceRepository")]
 class Service
@@ -14,24 +14,14 @@ class Service
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 100)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private ?string $image = null;
-
-    #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
-    private $price;
-
-    #[ORM\Column(type: 'integer')]
-    private $duration;
-
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'services')]
-    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\OneToMany(mappedBy: 'service', targetEntity: InvoiceItem::class)]
+    #[ORM\OneToMany(targetEntity: InvoiceItem::class, mappedBy: 'service')]
     private $invoiceItems;
 
     public function __construct()
@@ -55,28 +45,6 @@ class Service
         return $this;
     }
 
-    public function getPrice(): ?string
-    {
-        return $this->price;
-    }
-
-    public function setPrice(string $price): self
-    {
-        $this->price = $price;
-        return $this;
-    }
-
-    public function getDuration(): ?int
-    {
-        return $this->duration;
-    }
-
-    public function setDuration(int $duration): self
-    {
-        $this->duration = $duration;
-        return $this;
-    }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -85,16 +53,6 @@ class Service
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-        return $this;
-    }
-       public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
         return $this;
     }
 

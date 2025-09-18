@@ -16,7 +16,7 @@ class InvoiceItem
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private $invoice;
 
-    #[ORM\ManyToOne(targetEntity: Service::class)]
+    #[ORM\ManyToOne(targetEntity: Service::class, inversedBy: 'invoiceItems')]
     #[ORM\JoinColumn(nullable: false)]
     private $service;
 
@@ -89,4 +89,4 @@ class InvoiceItem
         $this->price = $price;
         return $this;
     }
-}   
+}

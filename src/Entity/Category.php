@@ -16,7 +16,7 @@ class Category
 
     #[ORM\Column(type: 'string', length: 100, unique: true)]
     private $name;
-    
+
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $image = null;
 
@@ -33,17 +33,6 @@ class Category
         return $this->id;
     }
 
-       public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -52,6 +41,17 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
         return $this;
     }
 
@@ -75,11 +75,10 @@ class Category
     public function removeService(Service $service): self
     {
         if ($this->services->removeElement($service)) {
-            // set the owning side to null
             if ($service->getCategory() === $this) {
                 $service->setCategory(null);
             }
         }
         return $this;
     }
-}   
+}
