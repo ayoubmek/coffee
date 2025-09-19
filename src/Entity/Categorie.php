@@ -2,10 +2,11 @@
 // src/Entity/Categorie.php
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use App\Entity\Produit;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[ORM\Entity(repositoryClass: "App\Repository\CategorieRepository")]
 class Categorie
@@ -19,9 +20,8 @@ class Categorie
     private ?string $nom = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $icone = null;
+    private ?string $icone = null;   // <- stores "assets/media/ch/filename.ext"
 
-    // --- Relation OneToMany vers Produit ---
     #[ORM\OneToMany(mappedBy: "categorie", targetEntity: Produit::class, cascade: ["persist", "remove"])]
     private Collection $produits;
 
@@ -30,32 +30,47 @@ class Categorie
         $this->produits = new ArrayCollection();
     }
 
-    // --- Getters / Setters ---
+    /* ---------- getters / setters ---------- */
     public function getId(): ?int { return $this->id; }
     public function getNom(): ?string { return $this->nom; }
-    public function setNom(string $nom): static { $this->nom = $nom; return $this; }
+    public function setNom(string $nom): self { $this->nom = $nom; return $this; }
 
     public function getIcone(): ?string { return $this->icone; }
-    public function setIcone(?string $icone): static { $this->icone = $icone; return $this; }
+    public function setIcone(?string $icone): self { $this->icone = $icone; return $this; }
 
     /** @return Collection|Produit[] */
     public function getProduits(): Collection { return $this->produits; }
 
-    public function addProduit(Produit $produit): static
+    public function addProduit(Produit $produit): self
     {
         if (!$this->produits->contains($produit)) {
-            $this->produits[] = $produit;
+            $this->produits->add($produit);
             $produit->setCategorie($this);
         }
         return $this;
     }
 
-    public function removeProduit(Produit $produit): static
+    public function removeProduit(Produit $produit): self
     {
         if ($this->produits->removeElement($produit)) {
             if ($produit->getCategorie() === $this) {
                 $produit->setCategorie(null);
             }
+        }
+        return $this;
+    }
+
+    /* -------------- unmapped upload -------------- */
+    private ?File $iconeFile = null;
+
+    public function getIconeFile(): ?File { return $this->iconeFile; }
+
+    public function setIconeFile(?File $iconeFile): self
+    {
+        $this->iconeFile = $iconeFile;
+        if ($iconeFile instanceof UploadedFile) {
+            // force Doctrine to see a change (lifecycle will handle move)
+            $this->icone = null;
         }
         return $this;
     }
