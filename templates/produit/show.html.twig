@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit - {{ produit.nom }}{% endblock %}
+
+{% block body %}
+<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+    <!--begin::Post-->
+    <div class="content flex-row-fluid" id="kt_content">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_show_product_form" class="form d-flex flex-column flex-lg-row">
+             <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+            
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Product</h2>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-0">
+                        <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+                            <div class="image-input-wrapper w-150px h-150px"
+                                 style="background-image: url('{{ asset(produit.image) }}')">
+                            </div>
+                        </div>
+                        <div class="text-muted fs-7">{{ produit.nom }}</div>
+                    </div>
+                </div> 
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Product Details</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <label class="form-label">Category</label>
+                        <input class="form-control mb-2" type="text" disabled value="{{ produit.categorie.nom }}" />
+                        <div class="text-muted fs-7 mb-7">Category of this product.</div>
+ 
+                    </div>
+                </div>
+          <!--begin::Pricing-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Pricing</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!-- Old Price -->
+                                <div class="mb-5 fv-row">
+                                    <label class="form-label">Old Price</label>
+                                    <input type="number" class="form-control" value="{{ produit.prixAncien }}" disabled />
+                                    <div class="text-muted fs-7">Original price before reduction.</div>
+                                </div>
+                                <!-- Reduction -->
+                                <div class="fv-row">
+                                    <label class="form-label">Reduction (%)</label>
+                                    <input type="number" class="form-control" value="{{ produit.reduction }}" disabled />
+                                    <div class="text-muted fs-7">Discount percentage applied to the product.</div>
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Pricing-->
+
+
+             
+                <!--end::Category & tags-->
+            </div>
+            <!--end::Aside column-->
+
+            <!--begin::Main column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <!--begin::General-->
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>General</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="mb-10 fv-row">
+                            <label class="required form-label">Product Name</label>
+                            <input class="form-control mb-2" type="text" disabled value="{{ produit.nom }}" />
+                        </div>
+                        <div>
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="6" disabled>{{ produit.description }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <!--end::General-->
+
+                <!--begin::Pricing-->
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Pricing</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="mb-10 fv-row">
+                            <label class="required form-label">Price</label>
+                            <input class="form-control mb-2" type="text" disabled value="{{ produit.prix }}" />
+                        </div>
+                        {% if produit.prixAncien %}
+                        <div class="mb-10 fv-row">
+                            <label class="form-label">Old Price</label>
+                            <input class="form-control mb-2" type="text" disabled value="{{ produit.prixAncien }}" />
+                        </div>
+                        {% endif %}
+                        {% if produit.reduction %}
+                        <div class="mb-10 fv-row">
+                            <label class="form-label">Reduction</label>
+                            <input class="form-control mb-2" type="text" disabled value="{{ produit.reduction }}%" />
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!--end::Pricing-->
+
+                <!--begin::Actions-->
+                <div class="d-flex justify-content-start gap-3">
+                     <a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="btn btn-primary">Edit</a>
+                    {{ include('produit/_delete_form.html.twig') }}
+                </div>
+                <!--end::Actions-->
+            </div>
+            <!--end::Main column-->
+        </form>
+        <!--end::Form-->
+    </div>
+</div>
+{% endblock %}
